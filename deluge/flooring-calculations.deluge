@@ -1,0 +1,15 @@
+sqft = input.SQFT;
+waste = input.Waste_Percent / 100;
+coverage = input.Carton_Coverage;
+
+if(coverage > 0)
+{
+    total_sqft = sqft + (sqft * waste);
+    cartons_needed = ceil(total_sqft / coverage);
+
+    input.Cartons_Needed = cartons_needed;
+    input.Material_Cost = cartons_needed * input.Cost_Per_Carton;
+    input.Labor_Cost = sqft * input.Labor_Rate;
+
+    input.Total_COGS = input.Material_Cost + input.Labor_Cost + input.Trim_Cost + input.Underlayment_Cost + input.Demo_Cost;
+}
